@@ -1,5 +1,3 @@
-ebox2 build environemnt
-
 
 Create the image (once):
 

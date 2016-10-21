@@ -1,0 +1,26 @@
+version: '2'
+services:
+  supervisor:
+    ##################################################
+    # BUILD - section
+    ##################################################
+    build:
+      context: ./build
+      dockerfile: Dockerfile
+      args:
+        BUILD_TZ: Europe/Berlin
+    ##################################################
+    # RUN / UP - section
+    ##################################################
+    image: supervisor-docker
+    container_name: supervisor-docker
+    restart: "no"
+    hostname: myhost
+    domainname: test.com
+    volumes:
+      - ./service:/service       # service volume for overwrites (ovm) and migration (mig)
+    environment:
+      # ssh  rsyslog cron 
+       - DISABLED_SERVICES=ssh cron rsyslog
+    #ports:
+    #  - "2345:22"      # sshd

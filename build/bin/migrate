@@ -1,6 +1,5 @@
 #!/bin/bash
 
-MUSER="root"
 TARGET=/service/mig
 
 _usage()
@@ -21,8 +20,6 @@ fi
 # magic main
 #############################################################################################
 
-MYSQL_ROOT_PW=$(grep "clientdb_password" /usr/local/ispconfig/server/lib/mysql_clientdb.conf | awk -F\' '{ print $2 }')
-
 if [ "$1" = "export" ] ; then
 
   echo "remove existing export directory <$TARGET> ..."
@@ -38,8 +35,8 @@ fi
 #
 if [ "$1" = "import" ] ; then
   
-   echo "migration import from <$TARGET> done."
- 
+  echo "migration import from <$TARGET> done."
+  echo ""
 fi
 
 
